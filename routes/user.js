@@ -1,29 +1,29 @@
 const express = require('express')
 const router = express.Router();
 
-const {login,signup} = require('../Controllers/Auth')
-const {auth,isStudent,isAdmin} = require("../middlewares/auth")
+const { login, signup } = require('../controllers/auth')
+const { auth, isStudent, isAdmin } = require("../middlewares/auth")
 
-router.post("/login",login)
-router.post("/signup",signup)
+router.post("/login", login)
+router.post("/signup", signup)
 
-router.get("/test",auth,(req,res)=>{
+router.get("/test", auth, (req, res) => {
     res.json({
-        success:true,
+        success: true,
         message: "Welcome to the protected route for Tests",
     });
 })
 
-router.get("/student",auth,isStudent,(req,res) => {
+router.get("/student", auth, isStudent, (req, res) => {
     res.json({
-        success:true,
+        success: true,
         message: "Welcome to the protected route for students",
     });
 })
 
-router.get("/admin",auth,isAdmin ,(req,res) => {
+router.get("/admin", auth, isAdmin, (req, res) => {
     res.json({
-        success:true,
+        success: true,
         message: "Welcome to the protected route for Admin",
     });
 })
